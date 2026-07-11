@@ -67,7 +67,7 @@ export default function LoginPage() {
           <div className="w-16 h-16 rounded-2xl bg-neon-green/10 border border-neon-green/30 flex items-center justify-center mb-4">
             <Trophy className="w-8 h-8 text-neon-green" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Green Box</h1>
+          <h1 className="text-2xl font-bold text-white">Langolandia</h1>
           <p className="text-muted-foreground text-sm mt-1">Beach Tennis Super 8</p>
         </div>
 

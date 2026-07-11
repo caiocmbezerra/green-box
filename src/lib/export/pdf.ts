@@ -98,7 +98,7 @@ export async function exportRankingPDF(
   // Footer
   doc.setFontSize(8)
   doc.setTextColor(80, 80, 80)
-  doc.text(`Gerado em ${new Date().toLocaleString('pt-BR')} · Green Box Beach Tennis`, 14, 285)
+  doc.text(`Gerado em ${new Date().toLocaleString('pt-BR')} · Langolandia Beach Tennis`, 14, 285)
 
   doc.save(`ranking-${tournament.name.replace(/\s+/g, '-').toLowerCase()}.pdf`)
 }

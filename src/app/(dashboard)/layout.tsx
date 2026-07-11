@@ -64,7 +64,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Zap className="w-5 h-5 text-neon-green" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white">Green Box</p>
+              <p className="text-sm font-bold text-white">Langolandia</p>
               <p className="text-xs text-muted-foreground">Beach Tennis</p>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </button>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-neon-green" />
-            <span className="text-sm font-bold">Green Box</span>
+            <span className="text-sm font-bold">Langolandia</span>
           </div>
           <button className="text-muted-foreground">
             <Bell className="w-5 h-5" />

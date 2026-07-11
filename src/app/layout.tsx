@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Green Box | Beach Tennis Super 8',
+  title: 'Langolandia | Beach Tennis Super 8',
   description: 'Sistema profissional para torneios de Beach Tennis no formato Super 8',
   manifest: '/manifest.json',
   appleWebApp: { capable: true, statusBarStyle: 'black-translucent' },

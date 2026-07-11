@@ -6,7 +6,10 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import type { Tournament, TournamentRanking } from '@/types/database'
 import { cn, formatDate } from '@/lib/utils'
-import { ArrowLeft, Trophy, Download, Share2, Medal } from 'lucide-react'
+import { ArrowLeft, Trophy, Download, Share2, Medal, Image } from 'lucide-react'
+import dynamic from 'next/dynamic'
+
+const PodiumCard = dynamic(() => import('@/components/shared/PodiumCard'), { ssr: false })
 
 export default function RankingPage() {
   const { id } = useParams<{ id: string }>()
@@ -14,6 +17,7 @@ export default function RankingPage() {
   const [tournament, setTournament] = useState<Tournament | null>(null)
   const [rankings, setRankings] = useState<TournamentRanking[]>([])
   const [loading, setLoading] = useState(true)
+  const [showSocialArt, setShowSocialArt] = useState(false)
 
   useEffect(() => {
     Promise.all([
@@ -138,9 +142,35 @@ export default function RankingPage() {
             <p className="text-xs text-muted-foreground mt-1">🥇 Campeão</p>
           </div>
           <div className="card-surface p-4 text-center">
-            <p className="text-2xl font-bold">{rankings.reduce((sum, r) => sum + r.matches_played, 0) / 2}</p>
+            <p className="text-2xl font-bold">{Math.floor(rankings.reduce((sum, r) => sum + r.matches_played, 0) / 2)}</p>
             <p className="text-xs text-muted-foreground mt-1">Partidas disputadas</p>
           </div>
+        </div>
+      )}
+
+      {/* Social art */}
+      {rankings.length >= 3 && (
+        <div>
+          <button onClick={() => setShowSocialArt(!showSocialArt)}
+            className="w-full flex items-center justify-center gap-2 card-surface py-3 text-sm font-medium text-muted-foreground hover:text-white transition-colors">
+            <Image className="w-4 h-4" />
+            {showSocialArt ? 'Ocultar arte' : 'Gerar arte para Instagram Story'}
+          </button>
+          {showSocialArt && tournament && (
+            <div className="mt-3 max-w-xs mx-auto">
+              <PodiumCard
+                tournamentName={tournament.name}
+                date={new Date(tournament.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
+                top3={rankings.slice(0, 3).map(r => ({
+                  position: r.position,
+                  name: (r as any).athlete?.name ?? '—',
+                  points: r.points,
+                  wins: r.wins,
+                  losses: r.losses,
+                }))}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

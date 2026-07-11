@@ -9,7 +9,7 @@ import { formatDate, formatTime, getStatusLabel, getFormatLabel, cn } from '@/li
 import {
   ArrowLeft, Trophy, Users, Play, BarChart3, Eye, Settings,
   Calendar, MapPin, Clock, Zap, ChevronRight, ExternalLink, UserPlus,
-  Loader2, AlertCircle,
+  Loader2, AlertCircle, UserCheck,
 } from 'lucide-react'
 import { generateTournamentRounds } from '@/lib/algorithms/super8'
 
@@ -150,12 +150,18 @@ export default function TournamentDetailPage() {
             <Link href={`/tournaments/${id}/results`} className="bg-surface-3 border border-surface-4 hover:border-white/20 rounded-xl px-4 py-2 text-sm flex items-center gap-2 transition-all">
               <Zap className="w-4 h-4" /> Resultados
             </Link>
+            <Link href={`/tournaments/${id}/checkin`} className="bg-surface-3 border border-surface-4 hover:border-white/20 rounded-xl px-4 py-2 text-sm flex items-center gap-2 transition-all">
+              <UserCheck className="w-4 h-4" /> Check-in
+            </Link>
           </>
         )}
         {canStart && (
           <>
             <Link href={`/tournaments/${id}/setup`} className="bg-surface-3 border border-surface-4 hover:border-white/20 rounded-xl px-4 py-2 text-sm flex items-center gap-2 transition-all">
               <UserPlus className="w-4 h-4" /> Atletas
+            </Link>
+            <Link href={`/tournaments/${id}/checkin`} className="bg-surface-3 border border-surface-4 hover:border-white/20 rounded-xl px-4 py-2 text-sm flex items-center gap-2 transition-all">
+              <UserCheck className="w-4 h-4" /> Check-in
             </Link>
             <button
               onClick={startTournament}

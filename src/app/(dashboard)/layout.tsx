@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import type { Profile } from '@/types/database'
 import {
-  LayoutDashboard, Trophy, Users, BarChart3, Settings,
+  LayoutDashboard, Trophy, Users, BarChart3, Star,
   LogOut, Menu, X, ChevronRight, Bell, Zap,
 } from 'lucide-react'
 import { cn, getInitials } from '@/lib/utils'
@@ -15,6 +15,7 @@ const NAV = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/tournaments', label: 'Torneios', icon: Trophy },
   { href: '/athletes', label: 'Atletas', icon: Users },
+  { href: '/leagues', label: 'Ligas', icon: Star },
   { href: '/stats', label: 'Estatísticas', icon: BarChart3 },
 ]
 
